@@ -14,6 +14,7 @@ class ShedulesController < ApplicationController
     lab_request = LabRequest.new(permitted_lab)
     lab_request.name = LabType.find(params[:shedule][:lab_type_id]).name
     lab_request.shedule_id = shedule.id
+    lab_request.request_file = '/referral.pdf'
 
     lab_request.save!
 

@@ -16,7 +16,7 @@
                           </thead>
                           <% current_user.lab_requests.order(due_date: :desc).each do |lab| %>
                             <tr>
-                              <td><a href=""><%= lab.name %></a></td>
+                              <td><%= link_to lab.request_file do %><%= lab.name %><% end %></a></td>
                               <td><%= lab.due_date %></td>
                               <td><%= lab.completed_at %></td>
                             </tr>
