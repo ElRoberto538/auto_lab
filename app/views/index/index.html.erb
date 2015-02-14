@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Current Lab Referrals Issued</h3>
+                      </div>
+                      <div class="panel-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <th>Type</th>
+                            <th>Next Due</th>
+                            <th>Completed On</th>
+                          </thead>
+                          <% current_user.lab_requests.order(due_date: :desc).each do |lab| %>
+                            <tr>
+                              <td><a href=""><%= lab.name %></a></td>
+                              <td><%= lab.due_date %></td>
+                              <td><%= lab.completed_at %></td>
+                            </tr>
+                          <% end %>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

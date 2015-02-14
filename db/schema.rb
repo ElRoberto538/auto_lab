@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214030633) do
+ActiveRecord::Schema.define(version: 20150214043133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150214030633) do
     t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "due_date"
   end
 
   add_index "lab_requests", ["shedule_id"], name: "index_lab_requests_on_shedule_id", using: :btree
@@ -64,6 +65,8 @@ ActiveRecord::Schema.define(version: 20150214030633) do
     t.integer  "lab_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "frequency"
+    t.hstore   "tests"
   end
 
   add_index "shedules", ["lab_type_id"], name: "index_shedules_on_lab_type_id", using: :btree
