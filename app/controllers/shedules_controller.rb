@@ -10,11 +10,12 @@ class ShedulesController < ApplicationController
   end
 
   def create
-    @shedule = Shedule.new(permitted_request)
-    @shedule.user = current_user
-    @shedule.save!
+    shedule = Shedule.create!(permitted_request)
+    lab_request = LabRequest.new(permitted_lab)
+    lab_request.name = LabType.find(params[:shedule][:lab_type_id]).name
+    lab_request.shedule_id = shedule.id
 
-    #TODO: create first lab_request and send email
+    lab_request.save!
 
     redirect_to :shedules
   end
@@ -25,11 +26,15 @@ class ShedulesController < ApplicationController
   end
 
   def update
-    # @shedule = Shedule.update(permitted_request)
+    #Shedule.update_all(permitted_request)
     redirect_to :shedules
   end
 
+  def permitted_lab
+    params.require(:shedule).permit(:tests, :due_date, :user_id)
+  end
+
   def permitted_request
-      params.require(:shedule).permit(:tests, :id, :max_recurrences, :due_date, :lab_type_id)
-   end
+    params.require(:shedule).permit(:tests, :id, :max_recurrences, :due_date, :lab_type_id, :user_id, :frequency)
+  end
 end

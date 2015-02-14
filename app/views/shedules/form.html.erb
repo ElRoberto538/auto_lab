@@ -1,78 +1,125 @@
 <%= form_for @shedule do |f| %>
 <div class="container">
-
   <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Biochemistry</h3>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Diabetes</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <%= check_box 'shedule[tests]', '[hba1c]' %>
+                <%= label 'shedule[tests]', '[hba1c]', 'HbA1c' %>
+              </div>
+            </div>
           </div>
-          <div class="panel-body">
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <%= check_box 'shedule[tests]', '[glucose_tolerance]' %>
-                    <%= label 'shedule[tests]', '[glucose_tolerance]', 'Diabetes - Glucose Tolerance Test' %>
-                  </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <%= check_box 'shedule[tests]', '[hdl]' %>
+                <%= label 'shedule[tests]', '[hdl]', 'Hdl' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[ldl]' %>
+                  <%= label 'shedule[tests]', '[ldl]', 'Ldl' %>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <%= check_box 'shedule[tests]', '[digoxin]' %>
-                    <%= label 'shedule[tests]', '[digoxin]', 'Drugs - Digoxin' %>
-                  </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <%= check_box 'shedule[tests]', '[triglyceride]' %>
+                <%= label 'shedule[tests]', '[triglyceride]', 'Triglyceride' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[tc_hdl_ratio]' %>
+                  <%= label 'shedule[tests]', '[tc_hdl_ratio]', 'Tc/Hdl Ratio' %>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <div class="checkbox">
-                      <%= check_box 'shedule[tests]', '[fsh]' %>
-                      <%= label 'shedule[tests]', '[fsh]', 'Hormones - FSH' %>
-                    </div>
-                  </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[fasting_glucose]' %>
+                  <%= label 'shedule[tests]', '[fasting_glucose]', 'Fasting Glucose' %>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <%= check_box 'shedule[tests]', '[alkaline_phos]' %>
-                    <%= label 'shedule[tests]', '[alkaline_phos]', 'Liver/Enzymes - Alkaline Phos' %>
-                  </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[acr]' %>
+                  <%= label 'shedule[tests]', '[acr]', 'ACR' %>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <div class="checkbox">
-                      <%= check_box 'shedule[tests]', '[glucose_tolerance]' %>
-                      <%= label 'shedule[tests]', '[glucose_tolerance]', 'Glucose Tolerance' %>
-                    </div>
-                  </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[liver_function]' %>
+                  <%= label 'shedule[tests]', '[liver_function]', 'Liver Function' %>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="checkbox">
+                <div class="checkbox">
+                  <%= check_box 'shedule[tests]', '[urine_microalbumin]' %>
+                  <%= label 'shedule[tests]', '[urine_microalbumin]', 'Urine Microalbumin' %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Frequency Settings</h3>
+          <h3 class="panel-title">Recurrence Settings</h3>
         </div>
         <div class="panel-body">
           <div class="form-group">
-                <%= f.label :lab_type_id, 'Lab Type' %><br/>
-                <%= f.select :lab_type_id, LabType.all.map {|lab| [lab.name, lab.id]} %>
+            <%= f.label :user_id, 'Patient' %><br/>
+            <%= f.select :user_id, User.all.map {|user| [user.email, user.id]} %>
           </div>
           <div class="form-group">
-            <%= f.label :due_date %><br/>
+            <%= f.label :lab_type_id, 'Lab Type' %><br/>
+            <%= f.select :lab_type_id, LabType.all.map {|lab| [lab.name, lab.id]} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :due_date, 'First Lab Date' %><br/>
             <%= f.date_select :due_date %>
           </div>
           <div class="form-group">
             <%= f.label :max_recurrences %><br/>
-            <%= f.select :max_recurrences, options_for_select([['One Off', "0"], ["Monthly", "1"], ["3 Monthly", "3"], ["6 Monthly", "6"]])%>
+            <%= f.text_field :max_recurrences %>
+          </div>
+          <div class="form-group">
+            <%= f.label :frequency %><br/>
+            <%= f.select :frequency, options_for_select([['One Off', 0], ["Monthly", 1], ["3 Monthly", 3], ["6 Monthly", 6]])%>
           </div>
         </div>
       </div>
