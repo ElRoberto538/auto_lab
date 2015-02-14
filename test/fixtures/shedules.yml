@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  due_date: 2015-02-14 03:06:19
+  user_id: 
+  notes: MyText
+  max_recurrences: 1
+  lab_type_id: 
+
+two:
+  due_date: 2015-02-14 03:06:19
+  user_id: 
+  notes: MyText
+  max_recurrences: 1
+  lab_type_id: 
